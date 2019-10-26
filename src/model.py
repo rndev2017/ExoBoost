@@ -1,7 +1,4 @@
-import os
-import math
-import re
-import time
+import os, math, re
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -11,8 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report, matthews_corrcoef
 
 
-data = pd.read_csv(
-    os.getcwd()+"\\final_data\\orb_params.csv").drop(columns=["Unnamed: 0"])
+data = pd.read_csv("\\path\\to\\data")
 
 
 X = data.iloc[:, 0:4]
@@ -36,6 +32,7 @@ model.fit(train_X, train_Y.values.ravel(), early_stopping_rounds=5000,
           eval_metric=["merror"], eval_set=eval_set, verbose=True)
 
 
+# evaluating model on the test set
 predictions = model.predict(test_X)
 test_y_arr = np.array(test_Y)
 
@@ -46,20 +43,10 @@ for index in range(len(predictions)):
         correctpred = correctpred + 1
     total = total+1
 
-print('accuracy='+str((correctpred*100)/total))
-
-time.sleep(5)
-
+accuracy = 'accuracy='+str((correctpred*100)/total))
 cm = confusion_matrix(test_y_arr, predictions)
-print(cm)
 
-time.sleep(5)
-
-print(pd.crosstab(index=test_y_arr, columns=np.round(
-    predictions), rownames=['actual'], colnames=['predictions']))
-
-time.sleep(5)
-
+# calculating recall of model on entire data set evaluation
 test_preds = predictions
 test_labels = test_y_arr
 
@@ -76,9 +63,6 @@ for target_label in np.unique(test_labels):
 recall = pd.DataFrame({'recall': recall_per_class, 'class_label': classes})
 recall.sort_values('class_label', ascending=False, inplace=True)
 
-print(recall)
-
-time.sleep(5)
 
 # accuracy for entire dataset
 correctpred_all, total_all = 0, 0
@@ -92,20 +76,14 @@ for index in range(len(predictions_all)):
         correctpred_all = correctpred_all + 1
     total_all = total_all+1
 
-print('accuracy='+str((correctpred_all*100)/total_all))
+accuracy_all = 'accuracy='+str((correctpred_all*100)/total_all))
 
-time.sleep(5)
 
-print(pd.crosstab(index=all_y, columns=np.round(predictions_all),
-                  rownames=['actual'], colnames=['predictions']))
-
-time.sleep(5)
-
+# calculating recall of model on entire data set evaluation
 test_preds_all = predictions_all
 test_labels_all = all_y
 
 recall_per_class_all, classes_all = [], []
-
 
 for target_label in np.unique(test_labels_all):
     recall_numerator_all = np.logical_and(
@@ -116,13 +94,12 @@ for target_label in np.unique(test_labels_all):
 recall_all = pd.DataFrame(
     {'recall': recall_per_class_all, 'class_label': classes_all})
 recall_all.sort_values('class_label', ascending=False, inplace=True)
-print(recall_all)
 
-time.sleep(10)
 
+# classification report using scikit-learn's API
 print("Test Set: \n" + classification_report(test_labels, test_preds))
 print("All Data: \n" + classification_report(test_labels_all, test_preds_all))
 
-time.sleep(5)
 
+# calculating the matthew's correlation coefficient
 print(matthews_corrcoef(test_labels_all, test_preds_all))
