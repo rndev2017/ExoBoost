@@ -44,7 +44,7 @@ class Star():
         plt.xlabel("JD [Julian Dates]")
         plt.ylabel("Radial Velocity [m/s]")
         plt.errorbar(x=t, y=rv, fmt=fmt, yerr=err)
-        plt.savefig(os.getcwd() + "\\RVC_Plots\\RVC_{}".format(self.star_name))
+        plt.savefig("path\\to\\some\\directory".format(self.star_name))
         plt.close()
 
     def keplerian_fit(self, t, K, P, e, w, tau, vr0):
@@ -69,7 +69,7 @@ class Star():
         plt.ylabel("Power")
         plt.semilogx(1./freq, power, fmt)
         plt.savefig(
-            os.getcwd() + "\\periodogram_plots\\LSpgram_{}.png".format(self.star_name))
+            "path\\to\\some\\directory".format(self.star_name))
         plt.close()
 
     def compute_period(self, freq, power):
@@ -117,7 +117,7 @@ class Star():
         plt.errorbar(phase, rv, err, fmt='.k')
         plt.plot(tfit, rvfit, 'r--')
         plt.savefig(
-            os.getcwd() + "\\Curve_Fitted_Plots\\RVC_Curve_Fit_{}".format(self.star_name))
+            "path\\to\\some\\directory".format(self.star_name))
         plt.close()
 
     def evaluate_fit(self, params):
