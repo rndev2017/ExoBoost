@@ -31,8 +31,11 @@ Rohan S. Nagavardhan: [@rndev2017](https://github.com/rndev2017) <br>
 - Pandas ([instructions](https://pandas.pydata.org/pandas-docs/stable/install.html))
 - NumPy ([instructions](https://scipy.org/install.html))
 - SciPy ([instructions](https://scipy.org/install.html))
-- Astropy ([instruction](https://www.astropy.org/))
-- Matplotlib ([instruction](https://matplotlib.org/users/installing.html))
-- Scikit-Learn - ([instruction](https://scikit-learn.org/stable/install.html))
-- Seaborn - ([instruction](https://seaborn.pydata.org/installing.html))
-- Astroquery - ([instruction](https://astroquery.readthedocs.io/en/latest/#installation))
+- Astropy ([instructions](https://www.astropy.org/))
+- Matplotlib ([instructions](https://matplotlib.org/users/installing.html))
+- Scikit-Learn - ([instructions](https://scikit-learn.org/stable/install.html))
+- Seaborn - ([instructions](https://seaborn.pydata.org/installing.html))
+- Astroquery - ([instructions](https://astroquery.readthedocs.io/en/latest/#installation))
+
+# Future Plans
+I will be submitting this work to a conference, [Exoplanets in our Backyard](https://www.hou.usra.edu/meetings/exoplanets2020/), in February of 2020. I might be given the oppurtunity to present this work at [LISEF](https://www.lisef.org/) and various science research fairs in the near future. This work may also be sent to a journal for publication. I will be working on improving the model and trying different approaches to solving similar problems. Keep following this directory for updates on this project.
