@@ -4,6 +4,6 @@ seaborn==0.9.0
 scipy==1.3.1
 pandas==0.25.2
 matplotlib==3.1.1
-numpy==1.16.3
+numpy==1.17.3
 astroquery==0.3.10
 scikit_learn==0.21.3
