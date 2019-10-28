@@ -1,1 +1,4 @@
 theme: jekyll-theme-minimal
+layout: About
+title: "ABOUT"
+permalink: /about/
