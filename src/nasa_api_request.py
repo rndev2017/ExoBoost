@@ -27,12 +27,15 @@ def create_new_df(names, num_of_planets):
     """
     names_df = pd.Series(data=star_names)
     pl_num = pd.Series(data=num_of_planets)
-    return pd.DataFrame(columns=["host_name", "num_of_planets"])
+    return pd.DataFrame({"host_name": names_df, "num_of_planets": num_of_planets}).drop_duplicates()
 
 
+x = create_new_df(star_names, num_of_planets)
 
-df["host_name"] = names_df
-df["num_of_planets"] = pl_num
+print(x.head(5))
+
+"""
+
 df.to_csv("\\path\\to\\save\\new\\file")
 
 
@@ -51,3 +54,4 @@ for star_name in params_df["Name"]:
 params_df["num_of_planets"] = pd.Series(data=num_planets_series)
 
 params_df.to_csv("\\path\\to\\save\\new\\file.csv")
+"""
