@@ -10,7 +10,6 @@ from sklearn.metrics import confusion_matrix, classification_report, matthews_co
 
 data = pd.read_csv("\\path\\to\\data")
 
-
 X = data.iloc[:, 0:4]
 Y = data.iloc[:, -1]
 
