@@ -18,10 +18,6 @@ Rohan S. Nagavardhan: [@rndev2017](https://github.com/rndev2017) <br>
     - plot periodograms
     - fit phased radial velocity curves
 
-[Research Paper/](https://github.com/rndev2017/ExoBoost/tree/master/Research%20Paper)
-- My research manuscript anticipating submission to the Regeneron STS Competition
-- <strong>Title</strong>: Identifying Exoplanet Companions using Radial Velocity with Deep Learning
-
 [data/](https://github.com/rndev2017/ExoBoost/tree/master/data)
 - contains the data used to train the XGBoost Classifier
 - formatted in `.csv` format
