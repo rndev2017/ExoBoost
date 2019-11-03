@@ -1,15 +1,16 @@
-import os 
+import os
 
 
-def extract_star_names():
-    file = "\\path\\to\\names"
+def extract_star_names(file):
+    """Extracts star names from a text file
 
+       Arguments:
+           file {str} -- the path to the text file
+
+       Returns:
+          star_names {list} -- a list of star_names from text file
+    """
     names = open(file, 'r')
-    star_names = []
+    star_names = [line[:-1] for line in names.readlines()]
 
-    with names:
-        for line in names.readlines():
-            star = line[:-1]
-            star_names.append(star)
-        
     return star_names
