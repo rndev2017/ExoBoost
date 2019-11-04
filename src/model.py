@@ -30,7 +30,7 @@ model = xgb.XGBClassifier(objective='multi:softmax',
                           n_estimators=3000,
                           silent=0,
                           subsample=0.8)
-eval_set = [(train_X, train_Y), (test_X, test_Y)]
+eval_set = [(train_X, train_Y), (test_X, test_Y)] # create an evaluation set
 
 # Fits the model on the training set
 model.fit(train_X, train_Y.values.ravel(), early_stopping_rounds=5000,
@@ -93,7 +93,6 @@ def generate_classification_report(y_true, y_pred):
        Returns:
            report {str} -- contains the F1-score, precision, recall, & support
                            of each class
-
     """
     return classification_report(y_true, y_pred)
 
@@ -121,4 +120,3 @@ def calculate_mmc(y_true, y_pred):
            mmc {float} -- the calculated Matthews correlation coefficient
     """
     return matthews_corrcoef(y_true, y_pred)
-    
