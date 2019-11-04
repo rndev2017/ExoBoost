@@ -45,7 +45,7 @@ def calculate_accuracy(y_true, y_pred):
            y_pred {numpy.array} -- the model's predictions
 
        Returns:
-           accuracy {str} -- the accuracy of the model (# out of 100)
+           accuracy {str} -- the accuracy of the model (%)
     """
     correctpred, total = 0, 0
 
