@@ -31,8 +31,7 @@ class ExoBoost(xgb.XGBClassifier):
                                    subsample=0.8)
 
 
-
-    def prepare_data(filepath):
+    def prepare_data(self, file_path):
         """Prepares data for model.
 
            Arguments:
