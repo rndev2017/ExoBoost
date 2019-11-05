@@ -21,7 +21,7 @@ class ExoBoost(xgb.XGBClassifier):
                lr {float} -- learning rate for the model
                num_class {int} -- the number of labels that the model classifies
         """
-        super(xgb.XGBClassifier).__init__(self, xgb.XGBClassifier.objective=obj,
+        super(ExoBoost).__init__(self, xgb.XGBClassifier.objective=obj,
                                    xgb.XGBClassifierlearning_rate=lr,
                                    xgb.XGBClassifier.num_class = num_class,
                                    xgb.XGBClassifier.gamma=4,
