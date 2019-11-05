@@ -29,6 +29,9 @@ class ExoBoost(xgb.XGBClassifier):
                                    n_estimators=3000,
                                    silent=0,
                                    subsample=0.8)
+        self.obj = obj
+        self.lr = lr
+        self.num_classes = num_classes
 
 
     def prepare_data(self, file_path):
