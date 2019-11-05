@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix, classification_report, matthews_co
 class ExoBoost(xgb.XGBClassifier):
 
 
-    def __init__(self, obj, lr, num_class):
+    def __init__(self, obj, lr, num_classes):
         """Constructs a ExoBoost object.
 
            Arguments:
@@ -21,19 +21,18 @@ class ExoBoost(xgb.XGBClassifier):
                lr {float} -- learning rate for the model
                num_class {int} -- the number of labels that the model classifies
         """
-        super(ExoBoost).__init__(self, xgb.XGBClassifier.objective=obj,
-                                   xgb.XGBClassifierlearning_rate=lr,
-                                   xgb.XGBClassifier.num_class = num_class,
-                                   xgb.XGBClassifier.gamma=4,
-                                   xgb.XGBClassifier.max_depth=10,
-                                   xgb.XGBClassifier.min_child_weight=2,
-                                   xgb.XGBClassifier.n_estimators=3000,
-                                   xgb.XGBClassifier.silent=0,
-                                   xgb.XGBClassifier.subsample=0.8)
+        xgb.XGBClassifier.__init__(self, objective=obj, learning_rate=lr,
+                                   num_class=num_classes,
+                                   gamma=4,
+                                   max_depth=10,
+                                   min_child_weight=2,
+                                   n_estimators=3000,
+                                   silent=0,
+                                   subsample=0.8)
 
 
 
-    def prepare_data(file_path):
+    def prepare_data(filepath):
         """Prepares data for model.
 
            Arguments:
@@ -104,7 +103,7 @@ class ExoBoost(xgb.XGBClassifier):
                 correctpred = correctpred + 1
             total = total+1
 
-        return 'accuracy='+str((correctpred*100)/total))
+        return 'accuracy='+str((correctpred*100)/total)
 
 
     def calculate_recall(y_true, y_pred):
