@@ -20,16 +20,20 @@ class ExoBoost(xgb.XGBClassifier):
                obj {str} -- what the model is trying to do (loss function?)
                lr {float} -- learning rate for the model
                num_class {int} -- the number of labels that the model classifies
+               
+           Returns:
+               Object {ExoBoost Object} -- an ExoBoost Model Object
         """
-        super(xgb.XGBClassifier).__init__(self, xgb.XGBClassifier.objective=obj,
-                                   xgb.XGBClassifierlearning_rate=lr,
-                                   xgb.XGBClassifier.num_class = num_class,
-                                   xgb.XGBClassifier.gamma=4,
-                                   xgb.XGBClassifier.max_depth=10,
-                                   xgb.XGBClassifier.min_child_weight=2,
-                                   xgb.XGBClassifier.n_estimators=3000,
-                                   xgb.XGBClassifier.silent=0,
-                                   xgb.XGBClassifier.subsample=0.8)
+        super(xgb.XGBClassifier).__init__(self, 
+                                          xgb.XGBClassifier.objective=obj,
+                                          xgb.XGBClassifier.learning_rate=lr,
+                                          xgb.XGBClassifier.num_class = num_class,
+                                          xgb.XGBClassifier.gamma=4,
+                                          xgb.XGBClassifier.max_depth=10,
+                                          xgb.XGBClassifier.min_child_weight=2,
+                                          xgb.XGBClassifier.n_estimators=3000,
+                                          xgb.XGBClassifier.silent=0,
+                                          xgb.XGBClassifier.subsample=0.8)
 
 
 
