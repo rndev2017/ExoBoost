@@ -39,6 +39,7 @@ predictions = model.predict(X)
 test_y_arr = np.array(Y)
 
 xgb.plot_tree(model)
+plt.rcParams["figure.figsize"] = (100, 100)
 plt.show()
 
 
