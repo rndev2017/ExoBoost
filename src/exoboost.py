@@ -5,14 +5,13 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import xgboost as xgb
-import graphviz
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report, matthews_corrcoef
-os.environ["PATH"] += os.pathsep + "C:\\Users\\rohan\\OneDrive\Desktop\\release\\bin"
+os.environ["PATH"] += os.pathsep + "\\path\\to\\graphviz"
 
 data = pd.read_csv(
-    "C:\\Users\\rohan\\OneDrive\\Documents\\GitHub\\ExoBoost\\data\\orb_params.csv").drop(columns=["Unnamed: 0"])
+    "\\path\\to\\file").drop(columns=["Unnamed: 0"])
 
 
 X = data.iloc[:, 0:4]
@@ -38,7 +37,7 @@ model.fit(train_X, train_Y.values.ravel(), early_stopping_rounds=5000,
 predictions = model.predict(X)
 test_y_arr = np.array(Y)
 
-xgb.plot_tree(model)
+xgb.plot_tree(booster=model, num_trees=3, rankdir='LR')
 plt.rcParams["figure.figsize"] = (100, 100)
 plt.show()
 
