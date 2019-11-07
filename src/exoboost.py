@@ -10,28 +10,34 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report, matthews_corrcoef
 
 
-class ExoBoost(xgb.XGBClassifier):
+class ExoBoost():
+
+    def __init__(self, lr, classes):
+        self.lr = lr
+        self.classes = classes
+        self.construct_model(lr=self.lr, classes=self.classes)
 
 
-    def __init__(self, obj, lr, num_classes):
-        """Constructs a ExoBoost object.
+    def construct_model(self, lr, gamma=4, max_depth=10, min_child_weight=2, classes):
+        """Constructs a model.
 
            Arguments:
-               obj {str} -- what the model is trying to do (loss function?)
-               lr {float} -- learning rate for the model
-               num_class {int} -- the number of labels that the model classifies
+               lr {float} -- learning rate of the model
+               classes {int} -- the number of labels
+
+           Returns:
+               model {XGBoostClassifier} -- the classifer model
         """
-        xgb.XGBClassifier.__init__(self, objective=obj, learning_rate=lr,
-                                   num_class=num_classes,
-                                   gamma=4,
-                                   max_depth=10,
-                                   min_child_weight=2,
-                                   n_estimators=3000,
-                                   silent=0,
-                                   subsample=0.8)
-        self.obj = obj
-        self.lr = lr
-        self.num_classes = num_classes
+        model = xgb.XGBClassifier(objective='multi:softmax',
+                          learning_rate=0.2,
+                          gamma=gamma,
+                          max_depth=max_depth,
+                          min_child_weight=min_child_weight,
+                          num_class=classes,
+                          n_estimators=3000,
+                          silent=0,
+                          subsample=0.8)
+        return model
 
 
     def prepare_data(self, file_path):
