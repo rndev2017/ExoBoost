@@ -9,7 +9,7 @@ import graphviz
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report, matthews_corrcoef
-
+os.environ["PATH"] += os.pathsep + "C:\\Users\\rohan\\OneDrive\Desktop\\release\\bin"
 
 data = pd.read_csv(
     "C:\\Users\\rohan\\OneDrive\\Documents\\GitHub\\ExoBoost\\data\\orb_params.csv").drop(columns=["Unnamed: 0"])
