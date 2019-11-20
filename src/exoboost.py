@@ -12,7 +12,7 @@ from sklearn.metrics import confusion_matrix, classification_report, matthews_co
 # os.environ["PATH"] += os.pathsep + "\\path\\to\\graphviz"
 
 data = pd.read_csv(
-    r"C:\\Users\\rohan\\OneDrive\\Documents\\GitHub\\ExoBoost\\data\\orb_params.csv").drop(columns=["Unnamed: 0"])
+    "path\\to\\data.csv").drop(columns=["Unnamed: 0"]) # FIX ME!
 
 
 X = data.iloc[:, 0:4]
