@@ -18,6 +18,10 @@ Rohan S. Nagavardhan: [@rndev2017](https://github.com/rndev2017) <br>
     - plot periodograms
     - fit phased radial velocity curves
 
+[plots/](https://github.com/rndev2017/ExoBoost/tree/master/plots)
+- contains images that are relavent to the model
+- contains images that are relavent to the exoplanet data
+
 [data/](https://github.com/rndev2017/ExoBoost/tree/master/data)
 - contains the data used to train the XGBoost Classifier
 - formatted in `.csv` format
