@@ -10,7 +10,7 @@ import os
 # inspiration from https://www.astro.princeton.edu/~jgreene/ast303/HW07_code/exoplanet.py
 
 
-class Star():
+class Fit():
 
     def __init__(self, file_path, star_name):
         self.file_path = file_path
