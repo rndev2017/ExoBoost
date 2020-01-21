@@ -19,6 +19,15 @@ Rohan S. Nagavardhan: [@rndev2017](https://github.com/rndev2017) <br>
     - fit phased radial velocity curves
     - the code for this class was inspired by <strong>Professor Jenny Greene</strong>'s AST303 Course Homework at Princeton                   University
 
+[sim/](https://github.com/rndev2017/ExoBoost/tree/master/sim)
+ - contains code base for simulating radial veloicty data
+ - contains data for simulated star systems
+ - contains the `Star` and `Planet` classes
+
+[plots/](https://github.com/rndev2017/ExoBoost/tree/master/plots)
+ - contains any relevent images for exoplanet data or the ExoBoost model
+ - contains 1 set of simulated radial velocity data
+ 
 [data/](https://github.com/rndev2017/ExoBoost/tree/master/data)
 - contains the data used to train the XGBoost Classifier
 - formatted in `.csv` format
