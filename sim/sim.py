@@ -3,10 +3,27 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import planet as pl
+import star
 
 uni_grav_const = 6.67e-11 # Units: N * m^2 * kg^-2
 
-n = 500
+
+def create_length_of_observation(n):
+    """Creates a certain length of n `observations`.
+
+    Parameters
+    ----------
+    n : integer
+        How many days you want to observe the simulated star.
+
+    Returns
+    -------
+    list
+        An n-dimensional list counting up to n.
+
+    """
+    return np.linspace(0, n-1, n)
 
 def calcualte_K(period, star_mass, planet_mass, e = 0, i = math.pi/2):
     """Calcuate the radial velocity semiamplitude based on Wright, Jason T.
@@ -33,45 +50,72 @@ def calcualte_K(period, star_mass, planet_mass, e = 0, i = math.pi/2):
       * ((planet_mass * math.sin(i))/(math.sqrt(1 - e**2)))
 
 
-def calculate_phase(period):
+def calculate_phase(time, period):
     """Calculates phase based on period.
 
     Parameters
     ----------
-    period : double
-        Orbital period of observation (days).
+    time : type
+        Description of parameter `time`.
+    period : type
+        Description of parameter `period`.
 
-    Returns phase
+    Returns
     -------
     list
         Orbital phase of the object orbiting the star.
 
     """
-    t = np.linspace(0, n-1, num=n)
 
-    return (t % period) / period
+    return (time % period) / period
 
 
-def rv(k, phase):
-    """Calculates the radial velocity of the simulated host star.
+def create_sim_props(k, phase):
+    """Create simulation properties for planet.
 
     Parameters
     ----------
-    k : double
-        Radial Velocity Semi-Amplitude (m/s).
+    k : integer
+        The Radial Velocity semiamplitude.
     phase : list
-        Time of one orbital cycle.
+        Orbital phase of the object orbiting the star.
+
+    Returns
+    -------
+    dictionary
+        Dictionary containing RV Semi. and Phase.
+
+    """
+    return {"K": k, "Phase": phase}
+
+
+def radvel(n_planets, sim_props, n):
+    """Calculates the radial velocity of a star.
+
+    Parameters
+    ----------
+    n_planets : integer
+        The number of planets.
+    sim_props : list
+        A list of simulation properties for each planet in the system.
 
     Returns rv
     -------
     list
-        Radial velocities corresponding to each phase.
+        list of radial velocities over time
 
     """
     error = np.random.normal(0, 10, n)
-    rv = k * np.sin(2 * np.pi * phase) + error
 
-    return rv
+    if n_planets == 1:
+        rv = sim_props["K"] * np.sin(2 * np.pi * sim_props["Phase"]) + error
+        return rv
+
+    else:
+        rv = np.zeros(n)
+        for i in range(n_planets):
+            rv += sim_props[i]["K"] * np.sin(2 * np.pi * sim_props[i]["Phase"]) + error
+        return rv
 
 
 def create_dataframe(time, rv_data):
@@ -96,50 +140,15 @@ def create_dataframe(time, rv_data):
 
     return data
 
+
 def save_to_csv(path, dataframe):
-    """Short summary.
+    """Saves dataframe to desired path.
 
     Parameters
     ----------
-    path : type
-        Description of parameter `path`.
-    dataframe : type
-        Description of parameter `dataframe`.
-
-    Returns
-    -------
-    type
-        Description of returned object.
-
+    path : string
+        Path to the save directory.
+    dataframe : Pandas DataFrame
+        DataFrame containing time series data.
     """
     dataframe.to_csv(path)
-
-
-
-period_b = 452.8
-period_c = 883.0
-
-phase_b = calculate_phase(period_b)
-phase_c = calculate_phase(period_c)
-
-
-planet_b = calcualte_K(
-    period = period_b * 365 * 24 * 60 * 60,
-    star_mass = 1.989e30 * 1.11,
-    planet_mass = 1.898e27 * 1.99,
-    e = 0.09
-)
-
-planet_c = calcualte_K(
-    period = period_c * 365 * 24 * 60 * 60,
-    star_mass = 1.989e30 * 1.11,
-    planet_mass = 1.898e27 * 0.86,
-    e = 0.29
-)
-
-rv_t = rv(planet_b, phase_b) + rv(planet_c, phase_c)
-
-data = create_dataframe(np.linspace(0, n-1, n), rv_t)
-
-print(data)
-save_to_csv(os.path.join(os.getcwd(), "data", "sim1.csv"), data)
