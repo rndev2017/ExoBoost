@@ -12,11 +12,12 @@ Rohan S. Nagavardhan: [@rndev2017](https://github.com/rndev2017) <br>
 [src/](https://github.com/rndev2017/ExoBoost/tree/master/src)
 - contains the XGBoost Classifier
 - contains the script used to label my data set
-- contains the `Star` class
+- contains the `Fit` class
     - plot Radial Velocity Plots
     - plot phased Radial Velocity Plots
     - plot periodograms
     - fit phased radial velocity curves
+    - the code for this class was inspired by <strong>Professor Jenny Greene</strong>'s AST303 Course Homework at Princeton                   University
 
 [data/](https://github.com/rndev2017/ExoBoost/tree/master/data)
 - contains the data used to train the XGBoost Classifier
