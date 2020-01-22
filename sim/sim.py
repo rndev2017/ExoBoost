@@ -134,9 +134,10 @@ def create_dataframe(time, rv_data):
         A Pandas-based time series data frame
 
     """
-    data_merge = list(zip(time, rv_data))
+    rv_error = [1 for i in range(len(time))]
+    data_merge = list(zip(time, rv_data, rv_error))
 
-    data = pd.DataFrame(data_merge, columns=["JD", "RV"])
+    data = pd.DataFrame(data_merge, columns=["JD", "RV", "RV_ERROR"])
 
     return data
 
