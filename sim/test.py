@@ -1,4 +1,5 @@
 import sim
+import os
 import planet as pl
 import star as s
 import matplotlib.pyplot as plt
@@ -24,10 +25,13 @@ k_b = sim.calcualte_K(b_planet_params[1]*24*60*60,
 k_c = sim.calcualte_K(c_planet_params[1]*24*60*60,
         host_star.get_star_mass(), c_planet_params[0], e=c_planet_params[2])
 
+print(k_b, k_c)
 
 sim_props_b = sim.create_sim_props(k_b, phase_b)
 sim_props_c = sim.create_sim_props(k_c, phase_c)
 sim_props = [sim_props_b, sim_props_c]
 
-
 rv = sim.radvel(2, sim_props, n)
+
+rv_df = sim.create_dataframe(time, rv)
+sim.save_to_csv("path", rv_df) # FIX ME
