@@ -34,4 +34,3 @@ sim_props = [sim_props_b, sim_props_c]
 rv = sim.radvel(2, sim_props, n)
 
 rv_df = sim.create_dataframe(time, rv)
-sim.save_to_csv("path", rv_df) # FIX ME
