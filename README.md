@@ -22,8 +22,8 @@ Rohan S. Nagavardhan: [@rndev2017](https://github.com/rndev2017) <br>
 - contains images that are relavent to the model
 - contains images that are relavent to the exoplanet data
 
-[plots/](https://github.com/rndev2017/ExoBoost/tree/master/sim)
-- contains code for simulating radial velocity data
+[sim/](https://github.com/rndev2017/ExoBoost/tree/master/sim)
+- contains code for creating synthetic radial velocity data
 
 [data/](https://github.com/rndev2017/ExoBoost/tree/master/data)
 - contains the data used to train the XGBoost Classifier
